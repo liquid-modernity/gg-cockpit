@@ -13,9 +13,9 @@ test('cockpit shell loads and authenticates with migrated v081 surface', async (
   await page.getByRole('button', { name: /Buka Cockpit/i }).click();
 
   await expect(page.getByRole('heading', { name: /Color-first production cockpit/i })).toBeVisible();
-  await expect(page.getByText('BOLT')).toBeVisible();
-  await expect(page.getByText('BNI LIFE')).toBeVisible();
-  await expect(page.getByRole('button', { name: /Discovery/i })).toBeVisible();
+  await expect(page.getByRole('columnheader', { name: 'BOLT' })).toBeVisible();
+  await expect(page.getByRole('columnheader', { name: 'BNI LIFE' })).toBeVisible();
+  await expect(page.locator('.cockpit-dock [data-gg-action="open-discovery"]')).toBeVisible();
 });
 
 test('keyboard user can reach primary controls', async ({ page }) => {
@@ -35,7 +35,7 @@ test('discovery can find a migrated work item', async ({ page }) => {
   await page.getByLabel('PIN').fill('1234');
   await page.getByRole('button', { name: /Buka Cockpit/i }).click();
 
-  await page.getByRole('button', { name: /Discovery/i }).click();
+  await page.locator('.cockpit-dock [data-gg-action="open-discovery"]').click();
   await page.getByLabel('Search').fill('Laporan Direksi');
 
   await expect(page.getByText(/Work Item/i)).toBeVisible();
