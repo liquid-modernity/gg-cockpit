@@ -10,7 +10,7 @@ function onOpen() {
     .addItem('Bootstrap database', 'bootstrapGagaCockpitDatabase')
     .addItem('Validate database', 'validateGagaCockpitDatabase')
     .addItem('Dry-run color sync', 'syncCockpitColorsToDatabaseDryRun')
-    .addItem('Sync colors to database', 'syncCockpitColorsToDatabase')
+    .addItem('Sync colors to database', 'syncColorsToDatabase')
     .addItem('Rebuild task snapshot', 'rebuildTaskSnapshot')
     .addItem('Validate structure', 'validateStructure')
     .addItem('Repair formatting from template', 'repairFormattingFromTemplate')
