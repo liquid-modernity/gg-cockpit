@@ -7,6 +7,9 @@
 function onOpen() {
   SpreadsheetApp.getUi()
     .createMenu('GAGA SYSTEM')
+    .addItem('Bootstrap database', 'bootstrapGagaCockpitDatabase')
+    .addItem('Validate database', 'validateGagaCockpitDatabase')
+    .addItem('Dry-run color sync', 'syncCockpitColorsToDatabaseDryRun')
     .addItem('Sync colors to database', 'syncColorsToDatabase')
     .addItem('Rebuild task snapshot', 'rebuildTaskSnapshot')
     .addItem('Validate structure', 'validateStructure')
