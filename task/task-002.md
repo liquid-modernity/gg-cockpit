@@ -29,7 +29,7 @@ Scope:
 
 1. Add a single config location for known non-workflow cell states.
 
-For now use config.gs, for example:
+For now use config.js, for example:
 
 CELL_STATE_COLORS = {
   '#000000': {

@@ -122,16 +122,26 @@ function getGagaDatabaseSchema_() {
     {
       name: GAGA_CONFIG.tabs.taskSnapshot,
       headers: [
+        'snapshot_id',
+        'sheet_name',
+        'cell_a1',
+        'project_code_or_column_header',
+        'row_number',
+        'column_number',
+        'cell_value',
+        'hex_color',
+        'status_code',
+        'status_label',
+        'responsible_role',
+        'last_seen_at',
+        'source_spreadsheet_id',
+        'source_sheet_name',
+        'source_range_a1',
+        'active',
         'task_instance_id',
         'project_id',
         'task_template_id',
-        'sheet_name',
-        'cell_a1',
-        'value',
-        'hex_color',
-        'status_code',
-        'last_seen_at',
-        'active'
+        'value'
       ],
       defaults: []
     },
@@ -140,16 +150,24 @@ function getGagaDatabaseSchema_() {
       headers: [
         'change_id',
         'changed_at',
+        'sheet_name',
+        'cell_a1',
+        'previous_status_code',
+        'new_status_code',
+        'previous_hex_color',
+        'new_hex_color',
+        'cell_value',
+        'responsible_role',
+        'change_type',
+        'source_spreadsheet_id',
+        'sync_run_id',
         'actor_email',
         'source',
         'task_instance_id',
         'project_id',
         'task_template_id',
-        'cell_a1',
         'old_hex_color',
-        'new_hex_color',
         'old_status_code',
-        'new_status_code',
         'notification_status'
       ],
       defaults: []
@@ -168,6 +186,14 @@ function getGagaDatabaseSchema_() {
       ]
     }
   ];
+}
+
+function getGagaDatabaseDefinition_(name) {
+  const schema = getGagaDatabaseSchema_();
+  for (let index = 0; index < schema.length; index += 1) {
+    if (schema[index].name === name) return schema[index];
+  }
+  throw new Error('Database schema definition not found: ' + name);
 }
 
 function getOrCreateSheet_(spreadsheet, name) {

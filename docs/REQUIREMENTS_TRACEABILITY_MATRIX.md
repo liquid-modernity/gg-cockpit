@@ -8,9 +8,9 @@
 | FR-004 | Sheet 1 Operational Fallback | docs/SOURCE_OF_TRUTH.md, docs/SHEET_CONTRACT.md | Documented |
 | FR-005 | Sheet 2 System Database | docs/SHEET_CONTRACT.md, registry-examples/*.csv | Initial |
 | FR-006 | Dashboard Task Cards | src/app/index.html, src/js/task-card.template.js | Initial |
-| FR-007 | Discord Notification | workers/src/discord.js, apps-script/discord.gs | Skeleton |
-| FR-008 | Dynamic CRUD | docs/SHEET_CONTRACT.md, apps-script/Code.gs | Planned |
-| FR-009 | Audit and Performance Logging | apps-script/sync.gs, docs/PRD.md | Skeleton |
+| FR-007 | Discord Notification | workers/src/discord.js, apps-script/discord.js | Skeleton |
+| FR-008 | Dynamic CRUD | docs/SHEET_CONTRACT.md, apps-script/Code.js | Planned |
+| FR-009 | Audit and Performance Logging | apps-script/sync.js, docs/PRD.md | Skeleton |
 | FR-010 | GitHub Actions CI/CD | .github/workflows/*.yml, docs/GITHUB_ACTIONS.md | Initial |
 | NFR-001 | Performance | docs/ARCHITECTURE.md, workers/src/cache.js | Initial |
 | NFR-002 | Reliability | docs/SOURCE_OF_TRUTH.md | Documented |

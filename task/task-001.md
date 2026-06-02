@@ -34,7 +34,7 @@ Scope for Release 0.2A:
 2. Do not hardcode these IDs in random files.
    Put them in one config location only:
    - Apps Script script properties, or
-   - apps-script/config.gs, with clear comments for later Script Properties migration.
+   - apps-script/config.js, with clear comments for later Script Properties migration.
 
 3. Implement a Sheet 2 bootstrap function that creates/validates headers for these tabs:
    - 01_USERS

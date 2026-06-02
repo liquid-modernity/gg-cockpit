@@ -59,10 +59,10 @@
     wrangler.toml
 
   apps-script/
-    Code.gs
-    sync.gs
-    registry.gs
-    discord.gs
+    Code.js
+    sync.js
+    registry.js
+    discord.js
 
   qa/
     architecture-guard.mjs

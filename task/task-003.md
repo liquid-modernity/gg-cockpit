@@ -19,17 +19,17 @@ Read:
 - docs/SHEET_CONTRACT.md
 - docs/PRD.md
 - docs/COCKPIT_PHILOSOPHY.md
-- apps-script/config.gs
-- apps-script/bootstrap.gs
-- apps-script/registry.gs
-- apps-script/sync.gs
-- apps-script/Code.gs
+- apps-script/config.js
+- apps-script/bootstrap.js
+- apps-script/registry.js
+- apps-script/sync.js
+- apps-script/Code.js
 
 Do not change the dashboard surface.
 Do not deploy anything.
 Do not add GitHub Actions for Apps Script deployment yet.
 Do not make the dashboard read directly from Sheet 1.
-Do not hardcode spreadsheet IDs outside config.gs.
+Do not hardcode spreadsheet IDs outside config.js.
 
 Scope:
 
@@ -41,8 +41,8 @@ Scope:
 
 4. Keep backward compatibility:
    - syncCockpitColorsToDatabase() should be the primary function.
-   - syncColorsToDatabase() may remain as an alias if Code.gs menu still references it.
-   - Update Code.gs menu label/function only if needed.
+   - syncColorsToDatabase() may remain as an alias if Code.js menu still references it.
+   - Update Code.js menu label/function only if needed.
 
 5. Update bootstrap schema for 07_TASK_SNAPSHOT and 08_CHANGE_LOG by adding missing headers only.
    Do not clear existing sheets.

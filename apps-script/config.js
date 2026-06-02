@@ -27,6 +27,7 @@ const CELL_STATE_COLORS = {
 
 const DRY_RUN_PREVIEW_LIMIT = 25;
 const DRY_RUN_INCLUDE_CELL_STATE_PREVIEW = false;
+const BLOCK_SYNC_ON_UNKNOWN_COLORS = true;
 
 const GAGA_CONFIG = {
   cockpitSpreadsheetId: COCKPIT_SPREADSHEET_ID,
@@ -36,6 +37,7 @@ const GAGA_CONFIG = {
   cellStateColors: CELL_STATE_COLORS,
   dryRunPreviewLimit: DRY_RUN_PREVIEW_LIMIT,
   dryRunIncludeCellStatePreview: DRY_RUN_INCLUDE_CELL_STATE_PREVIEW,
+  blockSyncOnUnknownColors: BLOCK_SYNC_ON_UNKNOWN_COLORS,
   tabs: {
     users: '01_USERS',
     projects: '02_PROJECTS',
