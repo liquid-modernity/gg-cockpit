@@ -14,7 +14,8 @@
     "qa:source-of-truth": "node qa/source-of-truth-guard.mjs",
     "qa:registry": "node qa/registry-hardcode-guard.mjs",
     "qa:css": "node qa/css-namespace-guard.mjs",
-    "qa:generated": "node qa/generated-artifact-guard.mjs"
+    "qa:generated": "node qa/generated-artifact-guard.mjs",
+    "qa:clasp-rootdir": "node qa/clasp-rootdir-guard.mjs"
   },
   "devDependencies": {
     "@playwright/test": "^1.55.0",

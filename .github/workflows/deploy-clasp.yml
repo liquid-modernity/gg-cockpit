@@ -48,8 +48,8 @@ jobs:
           printf '%s' '${{ secrets.CLASP_JSON }}' > .clasp.json
           test -s .clasp.json
 
-      - name: Verify clasp rootDir
-        run: node -e "const config = require('./.clasp.json'); if (config.rootDir !== 'apps-script') { throw new Error('CLASP_JSON rootDir must be apps-script'); }"
+      - name: Verify clasp push surface
+        run: npm run qa:clasp-rootdir
 
       - name: Push code to Apps Script
         run: clasp push --force

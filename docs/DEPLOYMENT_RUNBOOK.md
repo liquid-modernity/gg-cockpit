@@ -31,7 +31,11 @@ APPS_SCRIPT_DEPLOYMENT_URL
 SESSION_SECRET
 PIN_PEPPER
 GOOGLE_SERVICE_ACCOUNT_JSON
+CLASPRC_JSON
+CLASP_JSON
 ```
+
+`CLASP_JSON` is written to `.clasp.json` by the Apps Script GitHub Action. Keep local `.clasp.json` untracked; it is for developer machine support only.
 
 ## Staging Deploy
 

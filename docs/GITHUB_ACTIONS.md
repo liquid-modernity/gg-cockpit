@@ -30,6 +30,9 @@ GitHub Actions:
 
 .github/workflows/deploy-pages.yml
 = deploy static dashboard to Cloudflare Pages
+
+.github/workflows/deploy-clasp.yml
+= push Apps Script source from apps-script
 ```
 
 ## Required GitHub Secrets
@@ -47,6 +50,34 @@ CLOUDFLARE_ACCOUNT_ID
 DISCORD_WEBHOOK_URL
 GOOGLE_SERVICE_ACCOUNT_JSON
 APPS_SCRIPT_DEPLOYMENT_URL
+```
+
+Apps Script push requires these repository secrets:
+
+```text
+CLASPRC_JSON
+CLASP_JSON
+```
+
+`CLASP_JSON` must contain `rootDir` exactly equal to `apps-script`.
+
+## Apps Script Clasp
+
+Apps Script source lives in:
+
+```text
+apps-script/
+```
+
+The repo uses `.js` Apps Script source files only. Do not add `.gs` duplicates.
+
+`.clasp.json` is ignored because GitHub Actions writes it from `CLASP_JSON` before running `qa:clasp-rootdir` and `clasp push`. Developers may keep an untracked local `.clasp.json` for `clasp status` or local push checks, but it must not be committed.
+
+Validate the clasp push surface locally only after a local `.clasp.json` exists:
+
+```text
+npm run qa:clasp-rootdir
+clasp status
 ```
 
 ## Recommended Operating Rule
