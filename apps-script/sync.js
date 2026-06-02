@@ -4,30 +4,52 @@
  */
 
 function syncCockpitColorsToDatabaseDryRun() {
-  const scan = scanCockpitColors_();
-  const summary = Object.assign({}, scan.summary, { mode: 'dry-run' });
-  const preview = {
-    summary: summary,
-    previewLimit: GAGA_CONFIG.dryRunPreviewLimit,
-    workflowMappedCells: scan.workflowMappedCells.slice(0, GAGA_CONFIG.dryRunPreviewLimit),
-    unknownCells: scan.unknownCells.slice(0, GAGA_CONFIG.dryRunPreviewLimit)
-  };
-
-  if (GAGA_CONFIG.dryRunIncludeCellStatePreview) {
-    preview.cellStateCells = scan.cellStateCells.slice(0, GAGA_CONFIG.dryRunPreviewLimit);
-  }
-
-  Logger.log('GAGA dry-run summary\n' + JSON.stringify(summary, null, 2));
-  Logger.log('GAGA workflow mapped sample\n' + JSON.stringify(preview.workflowMappedCells, null, 2));
-  Logger.log('GAGA unknown sample\n' + JSON.stringify(preview.unknownCells, null, 2));
-  Logger.log('GAGA cell state summary\n' + JSON.stringify(summary.cellStateColors, null, 2));
-
-  return preview;
+  return runCockpitColorSync_({ dryRun: true });
 }
 
 function syncCockpitColorsToDatabase() {
+  return runCockpitColorSync_({ dryRun: false });
+}
+
+function syncColorsToDatabase() {
+  return syncCockpitColorsToDatabase();
+}
+
+function rebuildTaskSnapshot() {
+  // TODO Release 0.2C: full rebuild should reconcile archived/missing workflow cells.
+  return syncCockpitColorsToDatabase();
+}
+
+function debugSyncFunctionRouting() {
+  const routing = {
+    syncCockpitColorsToDatabaseDryRun: {
+      dryRun: true,
+      calls: 'runCockpitColorSync_({ dryRun: true })'
+    },
+    syncCockpitColorsToDatabase: {
+      dryRun: false,
+      calls: 'runCockpitColorSync_({ dryRun: false })'
+    },
+    syncColorsToDatabase: {
+      dryRun: false,
+      calls: 'syncCockpitColorsToDatabase()'
+    }
+  };
+
+  Logger.log('GAGA sync function routing\n' + JSON.stringify(routing, null, 2));
+  return routing;
+}
+
+function runCockpitColorSync_(options) {
+  const dryRun = Boolean(options && options.dryRun);
   const syncRunId = makeSyncRunId_();
   const scan = scanCockpitColors_();
+
+  if (dryRun) {
+    return buildDryRunPreview_(scan);
+  }
+
+  Logger.log('GAGA actual sync started');
 
   if (GAGA_CONFIG.blockSyncOnUnknownColors && scan.unknownCells.length > 0) {
     const message = [
@@ -50,6 +72,15 @@ function syncCockpitColorsToDatabase() {
   const changeLogSheet = getOrCreateSheet_(database, GAGA_CONFIG.tabs.changeLog);
   const snapshotHeaders = ensureHeaders_(snapshotSheet, getGagaDatabaseDefinition_(GAGA_CONFIG.tabs.taskSnapshot).headers);
   const changeLogHeaders = ensureHeaders_(changeLogSheet, getGagaDatabaseDefinition_(GAGA_CONFIG.tabs.changeLog).headers);
+
+  Logger.log('GAGA actual sync write target\n' + JSON.stringify({
+    syncRunId: syncRunId,
+    dryRun: false,
+    workflowMappedCells: scan.workflowMappedCells.length,
+    targetSnapshotSheetName: snapshotSheet.getName(),
+    targetChangeLogSheetName: changeLogSheet.getName()
+  }, null, 2));
+
   const existingSnapshots = readRowsByKey_(snapshotSheet, snapshotHeaders, 'snapshot_id');
   const nowIso = new Date().toISOString();
   const snapshotRowsToAppend = [];
@@ -101,6 +132,21 @@ function syncCockpitColorsToDatabase() {
       .setValues(changeRowsToAppend);
   }
 
+  if (
+    scan.workflowMappedCells.length > 0 &&
+    insertedSnapshotCount + updatedSnapshotCount + unchangedSnapshotCount === 0
+  ) {
+    throw new Error('Actual sync saw workflow cells but wrote no snapshot rows.');
+  }
+
+  Logger.log('GAGA actual sync write result\n' + JSON.stringify({
+    syncRunId: syncRunId,
+    insertedSnapshotCount: insertedSnapshotCount,
+    updatedSnapshotCount: updatedSnapshotCount,
+    unchangedSnapshotCount: unchangedSnapshotCount,
+    changeLogAppendCount: changeRowsToAppend.length
+  }, null, 2));
+
   const summary = Object.assign({}, scan.summary, {
     mode: 'sync',
     syncRunId: syncRunId,
@@ -114,15 +160,6 @@ function syncCockpitColorsToDatabase() {
 
   Logger.log('GAGA sync summary\n' + JSON.stringify(summary, null, 2));
   return summary;
-}
-
-function syncColorsToDatabase() {
-  return syncCockpitColorsToDatabase();
-}
-
-function rebuildTaskSnapshot() {
-  // TODO Release 0.2C: full rebuild should reconcile archived/missing workflow cells.
-  return syncCockpitColorsToDatabase();
 }
 
 function scanCockpitColors_() {
@@ -232,6 +269,27 @@ function scanCockpitColors_() {
     cellStateCells: cellStateCells,
     unknownCells: unknownCells
   };
+}
+
+function buildDryRunPreview_(scan) {
+  const summary = Object.assign({}, scan.summary, { mode: 'dry-run' });
+  const preview = {
+    summary: summary,
+    previewLimit: GAGA_CONFIG.dryRunPreviewLimit,
+    workflowMappedCells: scan.workflowMappedCells.slice(0, GAGA_CONFIG.dryRunPreviewLimit),
+    unknownCells: scan.unknownCells.slice(0, GAGA_CONFIG.dryRunPreviewLimit)
+  };
+
+  if (GAGA_CONFIG.dryRunIncludeCellStatePreview) {
+    preview.cellStateCells = scan.cellStateCells.slice(0, GAGA_CONFIG.dryRunPreviewLimit);
+  }
+
+  Logger.log('GAGA dry-run summary\n' + JSON.stringify(summary, null, 2));
+  Logger.log('GAGA workflow mapped sample\n' + JSON.stringify(preview.workflowMappedCells, null, 2));
+  Logger.log('GAGA unknown sample\n' + JSON.stringify(preview.unknownCells, null, 2));
+  Logger.log('GAGA cell state summary\n' + JSON.stringify(summary.cellStateColors, null, 2));
+
+  return preview;
 }
 
 function getCellStateColorMap_() {
