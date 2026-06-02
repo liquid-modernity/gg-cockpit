@@ -39,6 +39,18 @@ Monthly
 
 ## Recovery Scenarios
 
+### Bad Sync Run
+
+Action:
+1. Stop scheduled or manual sync runs.
+2. Identify the bad `sync_run_id` from `09_PERFORMANCE_LOG`.
+3. Inspect `08_CHANGE_LOG` rows for that `sync_run_id` to understand which cells changed.
+4. Inspect `11_SNAPSHOT_BACKUP` rows for that `sync_run_id` to find the previous snapshot state captured before mutation.
+5. Restore `07_TASK_SNAPSHOT` manually from `11_SNAPSHOT_BACKUP` if the current snapshot is wrong.
+6. Preserve the bad `08_CHANGE_LOG` rows as audit history. Do not delete log rows.
+7. Run `syncCockpitColorsToDatabaseDryRun()` and confirm unknown colors and counts before resuming actual sync.
+8. Run one actual sync and verify `09_PERFORMANCE_LOG`, `07_TASK_SNAPSHOT`, and `08_CHANGE_LOG`.
+
 ### Dashboard Down
 
 Action:

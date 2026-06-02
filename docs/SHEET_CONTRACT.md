@@ -36,6 +36,7 @@ Required tabs:
 08_CHANGE_LOG
 09_PERFORMANCE_LOG
 10_SYSTEM_CONFIG
+11_SNAPSHOT_BACKUP
 ```
 
 ## Color Registry

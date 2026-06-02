@@ -28,6 +28,11 @@ const CELL_STATE_COLORS = {
 const DRY_RUN_PREVIEW_LIMIT = 25;
 const DRY_RUN_INCLUDE_CELL_STATE_PREVIEW = false;
 const BLOCK_SYNC_ON_UNKNOWN_COLORS = true;
+const SYNC_LOCK_TIMEOUT_MS = 30000;
+const PERFORMANCE_LOG_ENABLED = true;
+const DRY_RUN_PERFORMANCE_LOG_ENABLED = false;
+const SNAPSHOT_BACKUP_ENABLED = true;
+const SNAPSHOT_BACKUP_TAB_NAME = '11_SNAPSHOT_BACKUP';
 
 const GAGA_CONFIG = {
   cockpitSpreadsheetId: COCKPIT_SPREADSHEET_ID,
@@ -38,6 +43,10 @@ const GAGA_CONFIG = {
   dryRunPreviewLimit: DRY_RUN_PREVIEW_LIMIT,
   dryRunIncludeCellStatePreview: DRY_RUN_INCLUDE_CELL_STATE_PREVIEW,
   blockSyncOnUnknownColors: BLOCK_SYNC_ON_UNKNOWN_COLORS,
+  syncLockTimeoutMs: SYNC_LOCK_TIMEOUT_MS,
+  performanceLogEnabled: PERFORMANCE_LOG_ENABLED,
+  dryRunPerformanceLogEnabled: DRY_RUN_PERFORMANCE_LOG_ENABLED,
+  snapshotBackupEnabled: SNAPSHOT_BACKUP_ENABLED,
   tabs: {
     users: '01_USERS',
     projects: '02_PROJECTS',
@@ -48,6 +57,7 @@ const GAGA_CONFIG = {
     taskSnapshot: '07_TASK_SNAPSHOT',
     changeLog: '08_CHANGE_LOG',
     performanceLog: '09_PERFORMANCE_LOG',
-    systemConfig: '10_SYSTEM_CONFIG'
+    systemConfig: '10_SYSTEM_CONFIG',
+    snapshotBackup: SNAPSHOT_BACKUP_TAB_NAME
   }
 };

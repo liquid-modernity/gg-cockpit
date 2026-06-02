@@ -174,7 +174,36 @@ function getGagaDatabaseSchema_() {
     },
     {
       name: GAGA_CONFIG.tabs.performanceLog,
-      headers: ['event_id', 'event_at', 'task_instance_id', 'project_id', 'user_id', 'kpi_event', 'points_delta', 'metadata_json'],
+      headers: [
+        'sync_run_id',
+        'mode',
+        'started_at',
+        'ended_at',
+        'duration_ms',
+        'status',
+        'sheet_name',
+        'watched_range_a1',
+        'scanned_cells',
+        'workflow_mapped_cells',
+        'cell_state_mapped_cells',
+        'unknown_cells',
+        'inserted_snapshot_count',
+        'updated_snapshot_count',
+        'unchanged_snapshot_count',
+        'change_log_append_count',
+        'skipped_cell_state_count',
+        'error_message',
+        'source_spreadsheet_id',
+        'database_spreadsheet_id',
+        'event_id',
+        'event_at',
+        'task_instance_id',
+        'project_id',
+        'user_id',
+        'kpi_event',
+        'points_delta',
+        'metadata_json'
+      ],
       defaults: []
     },
     {
@@ -184,6 +213,31 @@ function getGagaDatabaseSchema_() {
         ['COCKPIT_SHEET_NAME', GAGA_CONFIG.cockpitSheetName, 'Sheet 1 tab scanned by Apps Script sync.', ''],
         ['WATCHED_RANGE_A1', GAGA_CONFIG.watchedRangeA1, 'Sheet 1 watched range for color dry-run scans.', '']
       ]
+    },
+    {
+      name: GAGA_CONFIG.tabs.snapshotBackup,
+      headers: [
+        'backup_id',
+        'sync_run_id',
+        'backed_up_at',
+        'snapshot_id',
+        'sheet_name',
+        'cell_a1',
+        'project_code_or_column_header',
+        'row_number',
+        'column_number',
+        'cell_value',
+        'hex_color',
+        'status_code',
+        'status_label',
+        'responsible_role',
+        'last_seen_at',
+        'source_spreadsheet_id',
+        'source_sheet_name',
+        'source_range_a1',
+        'active'
+      ],
+      defaults: []
     }
   ];
 }

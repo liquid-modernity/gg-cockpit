@@ -25,6 +25,70 @@ AUTH_LOG
 WEBHOOK_LOG
 ```
 
+## Sync Performance Log
+
+`09_PERFORMANCE_LOG` records one row for each actual Apps Script sync run.
+
+Expected fields include:
+
+```text
+sync_run_id
+mode
+started_at
+ended_at
+duration_ms
+status
+sheet_name
+watched_range_a1
+scanned_cells
+workflow_mapped_cells
+cell_state_mapped_cells
+unknown_cells
+inserted_snapshot_count
+updated_snapshot_count
+unchanged_snapshot_count
+change_log_append_count
+skipped_cell_state_count
+error_message
+source_spreadsheet_id
+database_spreadsheet_id
+```
+
+Expected counts for a healthy repeated sync:
+
+```text
+workflow_mapped_cells > 0
+unknown_cells = 0
+inserted_snapshot_count = 0 after the first successful run
+updated_snapshot_count = 0 when Sheet 1 did not change
+unchanged_snapshot_count = workflow_mapped_cells when Sheet 1 did not change
+change_log_append_count = 0 when Sheet 1 did not change
+status = success
+```
+
+## Sync Drift Detection
+
+Possible drift signals:
+
+```text
+workflow_mapped_cells does not match active 07_TASK_SNAPSHOT rows
+unknown_cells > 0
+updated_snapshot_count spikes unexpectedly
+change_log_append_count spikes unexpectedly
+duration_ms rises sharply
+status = failed
+```
+
+When drift is suspected:
+1. Compare the latest `09_PERFORMANCE_LOG` row with the previous successful run.
+2. Inspect `08_CHANGE_LOG` for the same `sync_run_id`.
+3. Inspect `11_SNAPSHOT_BACKUP` for the previous snapshot captured before mutation.
+4. Run dry-run sync before running actual sync again.
+
+Unknown colors should block actual sync when `BLOCK_SYNC_ON_UNKNOWN_COLORS = true`.
+The failed run should still appear in `09_PERFORMANCE_LOG`, but it should not write
+`07_TASK_SNAPSHOT`, `08_CHANGE_LOG`, or `11_SNAPSHOT_BACKUP`.
+
 ## Required Alerts
 
 Discord admin alerts:

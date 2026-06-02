@@ -7,13 +7,11 @@
 function onOpen() {
   SpreadsheetApp.getUi()
     .createMenu('GAGA SYSTEM')
-    .addItem('Bootstrap database', 'bootstrapGagaCockpitDatabase')
-    .addItem('Validate database', 'validateGagaCockpitDatabase')
-    .addItem('Dry-run color sync', 'syncCockpitColorsToDatabaseDryRun')
-    .addItem('Sync colors to database', 'syncCockpitColorsToDatabase')
-    .addItem('Rebuild task snapshot', 'rebuildTaskSnapshot')
-    .addItem('Validate structure', 'validateStructure')
-    .addItem('Repair formatting from template', 'repairFormattingFromTemplate')
+    .addItem('Bootstrap Database', 'bootstrapGagaCockpitDatabase')
+    .addItem('Validate Database', 'validateGagaCockpitDatabase')
+    .addItem('Dry-run Color Sync', 'syncCockpitColorsToDatabaseDryRun')
+    .addItem('Actual Color Sync', 'syncCockpitColorsToDatabase')
+    .addItem('Debug Sync Routing', 'debugSyncFunctionRouting')
     .addToUi();
 }
 
