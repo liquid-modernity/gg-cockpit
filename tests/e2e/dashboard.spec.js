@@ -38,6 +38,13 @@ test('discovery can find a migrated work item', async ({ page }) => {
   await page.locator('.cockpit-dock [data-gg-action="open-discovery"]').click();
   await page.getByLabel('Search').fill('Laporan Direksi');
 
-  await expect(page.getByText(/Work Item/i)).toBeVisible();
-  await expect(page.getByText(/Laporan Direksi/i)).toBeVisible();
+  const results = page.locator('[data-gg-hook="discovery-results"]');
+  const firstWorkItem = results
+    .locator('[data-gg-hook="discovery-result"]')
+    .filter({ hasText: 'Laporan Direksi' })
+    .first();
+
+  await expect(firstWorkItem).toBeVisible();
+  await expect(firstWorkItem.locator('[data-gg-bind="type"]')).toHaveText('Work Item');
+  await expect(firstWorkItem.locator('[data-gg-bind="title"]')).toContainText('Laporan Direksi');
 });

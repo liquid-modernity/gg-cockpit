@@ -24,7 +24,7 @@ jobs:
           node-version: 22
 
       - name: Install dependencies
-        run: npm install
+        run: npm ci
 
       - name: Run QA
         run: npm run qa
@@ -35,10 +35,19 @@ jobs:
       - name: Run Playwright
         run: npx playwright test --project=chromium
 
+      - name: Preflight Cloudflare deploy
+        run: |
+          test -n "${{ secrets.CLOUDFLARE_API_TOKEN }}"
+          test -n "${{ secrets.CLOUDFLARE_ACCOUNT_ID }}"
+          test -f workers/wrangler.toml
+          test -f workers/src/index.js
+          test -f package-lock.json
+
       - name: Deploy Worker staging
         uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           workingDirectory: workers
           command: deploy --env staging
 
@@ -46,4 +55,5 @@ jobs:
         uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           command: pages deploy src --project-name=gaga-cockpit-dashboard-staging
