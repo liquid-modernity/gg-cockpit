@@ -60,6 +60,7 @@ Never commit:
 - Discord webhook URL;
 - Google service account JSON;
 - Apps Script deployment URL;
+- Apps Script read token;
 - session secret;
 - PIN pepper.
 
@@ -67,6 +68,30 @@ Use:
 - GitHub Actions secrets;
 - GitHub environment secrets;
 - Cloudflare Worker secrets.
+
+## Release 0.3A Read Bridge
+
+The Cloudflare Worker reads Sheet 2 through the Apps Script Web App. It does not
+call the Google Sheets API directly in Release 0.3A.
+
+Required runtime secrets:
+
+```text
+Cloudflare Worker:
+- APPS_SCRIPT_DEPLOYMENT_URL
+- APPS_SCRIPT_READ_TOKEN
+
+Apps Script Script Properties:
+- GAGA_APPS_SCRIPT_READ_TOKEN
+```
+
+`APPS_SCRIPT_READ_TOKEN` and `GAGA_APPS_SCRIPT_READ_TOKEN` must contain the same
+token value. The Worker sends the token to Apps Script, but never exposes it to
+clients.
+
+Do not use `GOOGLE_SERVICE_ACCOUNT_JSON`, `PIN_PEPPER`, or `SESSION_SECRET` for
+Release 0.3A read APIs. Those are reserved for later auth and direct Google API
+releases.
 
 ## Google Docs Security
 

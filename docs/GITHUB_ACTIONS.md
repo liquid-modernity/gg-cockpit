@@ -50,6 +50,7 @@ CLOUDFLARE_ACCOUNT_ID
 DISCORD_WEBHOOK_URL
 GOOGLE_SERVICE_ACCOUNT_JSON
 APPS_SCRIPT_DEPLOYMENT_URL
+APPS_SCRIPT_READ_TOKEN
 ```
 
 Apps Script push requires these repository secrets:
@@ -79,6 +80,24 @@ Validate the clasp push surface locally only after a local `.clasp.json` exists:
 npm run qa:clasp-rootdir
 clasp status
 ```
+
+## Worker Runtime Secrets
+
+GitHub Actions secrets are CI/CD inputs. Cloudflare Worker runtime secrets must
+also be configured in Cloudflare before the Worker can call Apps Script:
+
+```text
+APPS_SCRIPT_DEPLOYMENT_URL
+APPS_SCRIPT_READ_TOKEN
+```
+
+Apps Script must store the same read token in Script Properties under:
+
+```text
+GAGA_APPS_SCRIPT_READ_TOKEN
+```
+
+`GOOGLE_SERVICE_ACCOUNT_JSON` is not used by the Release 0.3A Worker read API.
 
 ## Recommended Operating Rule
 

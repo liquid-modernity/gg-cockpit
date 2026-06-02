@@ -4,15 +4,22 @@ compatibility_date = "2026-06-02"
 
 [vars]
 ENVIRONMENT = "development"
+# Runtime secrets are configured outside source:
+# - APPS_SCRIPT_DEPLOYMENT_URL
+# - APPS_SCRIPT_READ_TOKEN
+# Optional runtime variable:
+# - ALLOWED_ORIGIN
 
 [env.staging]
 name = "gaga-cockpit-api-staging"
 
 [env.staging.vars]
 ENVIRONMENT = "staging"
+# Set APPS_SCRIPT_DEPLOYMENT_URL and APPS_SCRIPT_READ_TOKEN as Worker secrets.
 
 [env.production]
 name = "gaga-cockpit-api"
 
 [env.production.vars]
 ENVIRONMENT = "production"
+# Set ALLOWED_ORIGIN in production; the Worker does not default to wildcard CORS.

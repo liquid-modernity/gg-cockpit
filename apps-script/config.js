@@ -33,6 +33,7 @@ const PERFORMANCE_LOG_ENABLED = true;
 const DRY_RUN_PERFORMANCE_LOG_ENABLED = false;
 const SNAPSHOT_BACKUP_ENABLED = true;
 const SNAPSHOT_BACKUP_TAB_NAME = '11_SNAPSHOT_BACKUP';
+const APPS_SCRIPT_READ_TOKEN_PROPERTY = 'GAGA_APPS_SCRIPT_READ_TOKEN';
 
 const GAGA_CONFIG = {
   cockpitSpreadsheetId: COCKPIT_SPREADSHEET_ID,
@@ -47,6 +48,7 @@ const GAGA_CONFIG = {
   performanceLogEnabled: PERFORMANCE_LOG_ENABLED,
   dryRunPerformanceLogEnabled: DRY_RUN_PERFORMANCE_LOG_ENABLED,
   snapshotBackupEnabled: SNAPSHOT_BACKUP_ENABLED,
+  appsScriptReadTokenProperty: APPS_SCRIPT_READ_TOKEN_PROPERTY,
   tabs: {
     users: '01_USERS',
     projects: '02_PROJECTS',

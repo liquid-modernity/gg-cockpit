@@ -138,6 +138,41 @@ Response example:
 }
 ```
 
+## Release 0.3A Read API
+
+The Worker read API proxies Apps Script read actions:
+
+```text
+GET /api/health
+GET /api/tasks
+GET /api/change-log/summary
+GET /api/performance/summary
+```
+
+Expected client response shape:
+
+```json
+{
+  "ok": true,
+  "data": {},
+  "error": null,
+  "meta": {
+    "source": "apps-script",
+    "generatedAt": "2026-06-03T00:00:00.000Z",
+    "requestId": "..."
+  }
+}
+```
+
+Operational checks:
+- `/api/health` should return `ok: true` when Worker and Apps Script token setup are correct.
+- `/api/tasks` should return active `07_TASK_SNAPSHOT` workflow rows.
+- `/api/change-log/summary` should return counts and latest sync identity only, not full log rows.
+- `/api/performance/summary` should show latest sync status and duration.
+- A Worker `502` with generic upstream auth text usually means the Worker token and Apps Script Script Property do not match.
+- A Worker `503` usually means Worker runtime secrets are missing.
+- A Worker `504` means Apps Script read timed out.
+
 ## No Silent Failure
 
 No failed sync, webhook, auth, or write-back operation should fail silently.

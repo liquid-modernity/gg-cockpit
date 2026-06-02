@@ -4,7 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "qa": "node qa/architecture-guard.mjs && node qa/frontend-contract-guard.mjs && node qa/naming-guard.mjs && node qa/source-of-truth-guard.mjs && node qa/registry-hardcode-guard.mjs && node qa/css-namespace-guard.mjs && node qa/generated-artifact-guard.mjs",
+    "qa": "node qa/architecture-guard.mjs && node qa/frontend-contract-guard.mjs && node qa/naming-guard.mjs && node qa/source-of-truth-guard.mjs && node qa/registry-hardcode-guard.mjs && node qa/css-namespace-guard.mjs && node qa/generated-artifact-guard.mjs && node qa/worker-secret-guard.mjs",
     "qa:architecture": "node qa/architecture-guard.mjs",
     "qa:frontend": "node qa/frontend-contract-guard.mjs",
     "qa:naming": "node qa/naming-guard.mjs",
@@ -15,7 +15,8 @@
     "qa:registry": "node qa/registry-hardcode-guard.mjs",
     "qa:css": "node qa/css-namespace-guard.mjs",
     "qa:generated": "node qa/generated-artifact-guard.mjs",
-    "qa:clasp-rootdir": "node qa/clasp-rootdir-guard.mjs"
+    "qa:clasp-rootdir": "node qa/clasp-rootdir-guard.mjs",
+    "qa:worker-secrets": "node qa/worker-secret-guard.mjs"
   },
   "devDependencies": {
     "@playwright/test": "^1.55.0",
