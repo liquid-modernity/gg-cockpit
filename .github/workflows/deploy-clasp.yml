@@ -1,29 +1,52 @@
-name: Deploy to Google Apps Script
+name: Push Apps Script
 
 on:
+  workflow_dispatch:
   push:
     branches:
-      - main  # Proses jalan otomatis saat Anda push ke branch main
+      - main
+    paths:
+      - 'apps-script/**'
+      - 'qa/**'
+      - 'package.json'
+      - 'package-lock.json'
+      - '.github/workflows/deploy-clasp.yml'
+
+concurrency:
+  group: apps-script-push
+  cancel-in-progress: false
 
 jobs:
-  deploy:
+  push-apps-script:
     runs-on: ubuntu-latest
+
     steps:
-    - name: Checkout Repo
-      uses: actions/checkout@v4
+      - name: Checkout repo
+        uses: actions/checkout@v4
 
-    - name: Setup Node.js
-      uses: actions/setup-node@v4
-      with:
-        node-version: '20'
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
 
-    - name: Install Clasp
-      run: npm install -g @google/clasp
+      - name: Install project dependencies
+        run: npm ci
 
-    - name: Create Kredensial File
-      run: |
-        mkdir -p ~/.clasprc.json
-        echo '${{ secrets.CLASPRC_JSON }}' > ~/.clasprc.json
+      - name: Run QA gates
+        run: npm run qa
 
-    - name: Push Code to Apps Script
-      run: clasp push --force
+      - name: Install clasp
+        run: npm install -g @google/clasp
+
+      - name: Write clasp credentials
+        run: |
+          printf '%s' '${{ secrets.CLASPRC_JSON }}' > ~/.clasprc.json
+          test -s ~/.clasprc.json
+
+      - name: Write clasp project config
+        run: |
+          printf '%s' '${{ secrets.CLASP_JSON }}' > .clasp.json
+          test -s .clasp.json
+
+      - name: Push code to Apps Script
+        run: clasp push --force
