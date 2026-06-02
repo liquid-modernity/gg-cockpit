@@ -1,0 +1,8 @@
+{
+  "auth.title": "Masuk",
+  "auth.email_label": "Email",
+  "auth.pin_label": "PIN",
+  "task.open_doc": "Buka Dokumen",
+  "task.mark_done": "Tandai Selesai",
+  "task.empty": "Tidak ada tugas aktif."
+}

@@ -1,0 +1,334 @@
+{
+  "version": "0.8.1-migrated",
+  "viewModes": [
+    "fit",
+    "focus",
+    "compare",
+    "presentation"
+  ],
+  "clients": [
+    {
+      "id": "PROJECT_BOLT_2025",
+      "code": "BOLT",
+      "name": "Garuda Metalindo"
+    },
+    {
+      "id": "PROJECT_WTON_2025",
+      "code": "WTON",
+      "name": "WIKA Beton"
+    },
+    {
+      "id": "PROJECT_HRTA_2025",
+      "code": "HRTA",
+      "name": "Hartadinata"
+    },
+    {
+      "id": "PROJECT_BNILIFE_2025",
+      "code": "BNI LIFE",
+      "name": "BNI Life"
+    },
+    {
+      "id": "PROJECT_WIKA_IKON_2025",
+      "code": "WIKA IKON",
+      "name": "WIKA Ikon"
+    },
+    {
+      "id": "PROJECT_CASS_2025",
+      "code": "CASS",
+      "name": "Cahaya Aero Services"
+    },
+    {
+      "id": "PROJECT_ADCP_2025",
+      "code": "ADCP",
+      "name": "Adhi Commuter Properti"
+    },
+    {
+      "id": "PROJECT_GPRA_2025",
+      "code": "GPRA",
+      "name": "Perdana Gapura Prima"
+    },
+    {
+      "id": "PROJECT_FORE_2025",
+      "code": "FORE",
+      "name": "Fore Kopi"
+    },
+    {
+      "id": "PROJECT_PLNIPS_2025",
+      "code": "PLNIPS",
+      "name": "PLN IP Services"
+    },
+    {
+      "id": "PROJECT_PINDAD_2025",
+      "code": "PINDAD",
+      "name": "Pindad"
+    }
+  ],
+  "rows": [
+    {
+      "id": "TASK_CONTENTS",
+      "label": "Contents",
+      "section": true
+    },
+    {
+      "id": "TASK_RESOURCE",
+      "label": "PIC / Resource",
+      "resource": true
+    },
+    {
+      "id": "TASK_THEME",
+      "label": "Theme / Tender / Concept"
+    },
+    {
+      "id": "TASK_LAPORAN_DIREKSI",
+      "label": "Laporan Direksi"
+    },
+    {
+      "id": "TASK_LAPORAN_DK",
+      "label": "Laporan Dewan Komisaris"
+    },
+    {
+      "id": "TASK_RUPS",
+      "label": "RUPS"
+    },
+    {
+      "id": "TASK_MACRO",
+      "label": "Tinjauan Makroekonomi & Industri"
+    },
+    {
+      "id": "TASK_MARKETING",
+      "label": "Aspek Pemasaran"
+    },
+    {
+      "id": "TASK_PROSPECT",
+      "label": "Prospek Usaha"
+    },
+    {
+      "id": "TASK_GRI_222",
+      "label": "Penjelasan Direksi [GRI 2-22] [OJK D.1]"
+    },
+    {
+      "id": "TASK_OJK_A1",
+      "label": "Strategi Keberlanjutan [OJK A.1]"
+    },
+    {
+      "id": "TASK_LAYOUT",
+      "label": "Layout / PDF Accord"
+    }
+  ],
+  "cells": {
+    "TASK_RESOURCE": {
+      "PROJECT_BOLT_2025": {
+        "text": "Freelance",
+        "statusKey": "RESOURCE"
+      },
+      "PROJECT_WTON_2025": {
+        "text": "Alfath",
+        "statusKey": "RESOURCE"
+      },
+      "PROJECT_HRTA_2025": {
+        "text": "Alfath",
+        "statusKey": "RESOURCE"
+      },
+      "PROJECT_BNILIFE_2025": {
+        "text": "Bhakti",
+        "statusKey": "RESOURCE"
+      },
+      "PROJECT_WIKA_IKON_2025": {
+        "text": "Bhakti",
+        "statusKey": "RESOURCE"
+      },
+      "PROJECT_CASS_2025": {
+        "text": "Team",
+        "statusKey": "RESOURCE"
+      },
+      "PROJECT_ADCP_2025": {
+        "text": "Bhakti",
+        "statusKey": "RESOURCE"
+      },
+      "PROJECT_GPRA_2025": {
+        "text": "Freelance",
+        "statusKey": "RESOURCE"
+      },
+      "PROJECT_FORE_2025": {
+        "text": "Bhakti",
+        "statusKey": "RESOURCE"
+      },
+      "PROJECT_PLNIPS_2025": {
+        "text": "Team",
+        "statusKey": "RESOURCE"
+      },
+      "PROJECT_PINDAD_2025": {
+        "text": "Secure Cloud",
+        "statusKey": "RESOURCE"
+      }
+    },
+    "TASK_THEME": {
+      "PROJECT_BOLT_2025": {
+        "text": "2025_BOLT_TENDER",
+        "statusKey": "DRAFT",
+        "url": "https://docs.google.com/"
+      },
+      "PROJECT_WTON_2025": {
+        "text": "Theme proposal",
+        "statusKey": "TRANS",
+        "url": "https://docs.google.com/"
+      },
+      "PROJECT_PLNIPS_2025": {
+        "text": "2025_PLNIPS_THEMES",
+        "statusKey": "LAYOUT",
+        "url": "https://docs.google.com/"
+      }
+    },
+    "TASK_LAPORAN_DIREKSI": {
+      "PROJECT_BOLT_2025": {
+        "text": "Draft",
+        "statusKey": "DRAFT",
+        "url": "https://docs.google.com/"
+      },
+      "PROJECT_WTON_2025": {
+        "text": "Ready TR",
+        "statusKey": "TRANS",
+        "url": "https://docs.google.com/"
+      },
+      "PROJECT_BNILIFE_2025": {
+        "text": "Layout",
+        "statusKey": "LAYOUT",
+        "url": "https://docs.google.com/"
+      },
+      "PROJECT_CASS_2025": {
+        "text": "Accord",
+        "statusKey": "ACCORD",
+        "url": "https://docs.google.com/"
+      }
+    },
+    "TASK_LAPORAN_DK": {
+      "PROJECT_HRTA_2025": {
+        "text": "Draft",
+        "statusKey": "DRAFT",
+        "url": "https://docs.google.com/"
+      },
+      "PROJECT_WIKA_IKON_2025": {
+        "text": "Ready Layout",
+        "statusKey": "LAYOUT",
+        "url": "https://docs.google.com/"
+      },
+      "PROJECT_ADCP_2025": {
+        "text": "Revision",
+        "statusKey": "REV",
+        "url": "https://docs.google.com/"
+      }
+    },
+    "TASK_RUPS": {
+      "PROJECT_GPRA_2025": {
+        "text": "Draft",
+        "statusKey": "FREELANCE_DRAFT",
+        "url": "https://docs.google.com/"
+      },
+      "PROJECT_FORE_2025": {
+        "text": "Ready TR",
+        "statusKey": "TRANS",
+        "url": "https://docs.google.com/"
+      }
+    },
+    "TASK_MACRO": {
+      "PROJECT_WTON_2025": {
+        "text": "Accord",
+        "statusKey": "ACCORD",
+        "url": "https://docs.google.com/"
+      },
+      "PROJECT_PINDAD_2025": {
+        "text": "Protected",
+        "statusKey": "BLOCK",
+        "url": "https://drive.google.com/"
+      }
+    },
+    "TASK_GRI_222": {
+      "PROJECT_BNILIFE_2025": {
+        "text": "Syariah add",
+        "statusKey": "DRAFT",
+        "url": "https://docs.google.com/"
+      },
+      "PROJECT_PLNIPS_2025": {
+        "text": "GRI/OJK",
+        "statusKey": "LAYOUT",
+        "url": "https://docs.google.com/"
+      }
+    },
+    "TASK_OJK_A1": {
+      "PROJECT_PLNIPS_2025": {
+        "text": "Accord",
+        "statusKey": "ACCORD",
+        "url": "https://docs.google.com/"
+      },
+      "PROJECT_FORE_2025": {
+        "text": "Draft",
+        "statusKey": "DRAFT",
+        "url": "https://docs.google.com/"
+      }
+    },
+    "TASK_LAYOUT": {
+      "PROJECT_CASS_2025": {
+        "text": "PDF",
+        "statusKey": "DONE",
+        "url": "https://drive.google.com/"
+      },
+      "PROJECT_ADCP_2025": {
+        "text": "Layout",
+        "statusKey": "LAYOUT",
+        "url": "https://drive.google.com/"
+      }
+    }
+  },
+  "status": {
+    "DRAFT": {
+      "label": "Draft",
+      "hex": "#fff176",
+      "short": "DR"
+    },
+    "TRANS": {
+      "label": "Ready Translation",
+      "hex": "#80deea",
+      "short": "TR"
+    },
+    "LAYOUT": {
+      "label": "Ready Layout",
+      "hex": "#f062d2",
+      "short": "LY"
+    },
+    "REV": {
+      "label": "Revision",
+      "hex": "#ffb74d",
+      "short": "RV"
+    },
+    "BLOCK": {
+      "label": "Blocked",
+      "hex": "#ef5350",
+      "short": "BL"
+    },
+    "ACCORD": {
+      "label": "Accord",
+      "hex": "#81c784",
+      "short": "AC"
+    },
+    "DONE": {
+      "label": "Done",
+      "hex": "#64b5f6",
+      "short": "DN"
+    },
+    "RESOURCE": {
+      "label": "Resource",
+      "hex": "#ffffff",
+      "short": ""
+    },
+    "FREELANCE_DRAFT": {
+      "label": "Freelance Draft",
+      "hex": "#ff9900",
+      "short": "EX"
+    },
+    "EMPTY": {
+      "label": "Empty",
+      "hex": "#fafafa",
+      "short": ""
+    }
+  }
+}

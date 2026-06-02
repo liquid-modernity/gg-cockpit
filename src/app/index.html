@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="id" data-gg-theme="light" data-cockpit-view-mode="fit">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <title>GAGA Cockpit Dashboard</title>
+  <meta name="description" content="Cockpit kerja tim berbasis Google Sheet fallback dan dashboard terkurasi." />
+  <link rel="stylesheet" href="../styles/tokens.css" />
+  <link rel="stylesheet" href="../styles/global.css" />
+  <link rel="stylesheet" href="../styles/cockpit-dashboard.css" />
+</head>
+<body data-gg-app="cockpit-dashboard">
+  <a class="gg-skip-link" href="#main">Lewati ke konten utama</a>
+
+  <section class="cockpit-login" data-gg-hook="auth-panel" aria-labelledby="auth-title">
+    <form class="cockpit-login__panel" data-gg-action="auth-submit">
+      <p class="cockpit-login__kicker">GAGA Cockpit OS</p>
+      <h1 id="auth-title" class="cockpit-login__title">Masuk Cockpit</h1>
+      <p class="cockpit-login__lead">Gunakan email dan PIN. Google Sheet tetap menjadi fallback operasional.</p>
+
+      <label class="cockpit-field">
+        <span class="cockpit-field__label">Email</span>
+        <input class="cockpit-field__input" name="email" type="email" autocomplete="email" placeholder="email@domain.com" required />
+      </label>
+
+      <label class="cockpit-field">
+        <span class="cockpit-field__label">PIN</span>
+        <input class="cockpit-field__input" name="pin" type="password" inputmode="numeric" pattern="[0-9]{4,8}" placeholder="PIN" required />
+      </label>
+
+      <button class="gg-button gg-button--primary cockpit-login__submit" type="submit">Buka Cockpit</button>
+    </form>
+  </section>
+
+  <div class="cockpit-shell" data-gg-hook="cockpit-shell" hidden>
+    <main id="main" class="cockpit-main" tabindex="-1">
+      <section class="cockpit-surface cockpit-surface--table" data-gg-hook="cockpit-surface" aria-labelledby="cockpit-title">
+        <header class="cockpit-toolbar">
+          <div class="cockpit-toolbar__heading">
+            <p class="cockpit-toolbar__kicker">All Clients Cockpit</p>
+            <h1 id="cockpit-title" class="cockpit-toolbar__title">Color-first production cockpit</h1>
+          </div>
+
+          <div class="cockpit-view-mode" aria-label="Mode tampilan cockpit">
+            <button type="button" data-gg-action="set-view-mode" data-gg-view-mode="fit" class="gg-is-active">Fit</button>
+            <button type="button" data-gg-action="set-view-mode" data-gg-view-mode="focus">Focus</button>
+            <button type="button" data-gg-action="set-view-mode" data-gg-view-mode="compare">Compare</button>
+            <button type="button" data-gg-action="set-view-mode" data-gg-view-mode="presentation">Present</button>
+          </div>
+
+          <p class="cockpit-selected-chip" data-gg-hook="selected-chip">Belum ada sel dipilih</p>
+        </header>
+
+        <div class="cockpit-table-wrap" data-gg-hook="cockpit-table-wrap">
+          <table class="cockpit-table" data-gg-hook="cockpit-table"></table>
+        </div>
+      </section>
+
+      <section class="cockpit-surface cockpit-surface--tasks" data-gg-hook="tasks-surface" aria-labelledby="tasks-title" hidden>
+        <header class="cockpit-toolbar">
+          <div class="cockpit-toolbar__heading">
+            <p class="cockpit-toolbar__kicker">Work Items</p>
+            <h2 id="tasks-title" class="cockpit-toolbar__title">Tugas Saya</h2>
+          </div>
+          <button class="gg-button" type="button" data-gg-action="show-cockpit">Kembali ke Cockpit</button>
+        </header>
+        <div class="cockpit-task-list" data-gg-hook="task-list" aria-live="polite"></div>
+      </section>
+    </main>
+
+    <aside class="cockpit-outline" data-gg-hook="detail-outline" data-gg-outline-state="peek" aria-label="Discovery dan detail sel">
+      <button class="cockpit-outline__search" type="button" data-gg-action="open-discovery">
+        <span class="cockpit-outline__search-main">
+          <span class="cockpit-outline__search-label">Discovery</span>
+          <span class="cockpit-outline__search-text" data-gg-hook="discovery-label">Cari klien, bab, atau status</span>
+        </span>
+        <kbd>/</kbd>
+      </button>
+
+      <button class="cockpit-outline__peek" type="button" data-gg-action="toggle-outline">
+        <span class="cockpit-outline__peek-main">
+          <span class="cockpit-outline__label">Selection</span>
+          <span class="cockpit-outline__current" data-gg-hook="outline-current">Belum ada pilihan</span>
+        </span>
+        <span class="cockpit-outline__summary" data-gg-hook="outline-summary">0</span>
+      </button>
+
+      <div class="cockpit-outline__tray" data-gg-hook="outline-tray" hidden>
+        <a class="cockpit-outline__action" data-gg-hook="outline-open-link" target="_blank" rel="noopener" href="#">Buka dokumen</a>
+        <button class="cockpit-outline__action" type="button" data-gg-action="show-tasks">Lihat work items</button>
+      </div>
+    </aside>
+
+    <nav class="cockpit-dock" aria-label="Cockpit navigation">
+      <button class="cockpit-dock__item gg-is-active" type="button" data-gg-action="show-cockpit">
+        <span class="cockpit-dock__icon">▦</span>
+        <span>Cockpit</span>
+      </button>
+      <button class="cockpit-dock__item" type="button" data-gg-action="show-tasks">
+        <span class="cockpit-dock__icon">●</span>
+        <span>Work</span>
+      </button>
+      <button class="cockpit-dock__item cockpit-dock__item--primary" type="button" data-gg-action="open-discovery">
+        <span class="cockpit-dock__icon">⌕</span>
+        <span>Discovery</span>
+      </button>
+      <button class="cockpit-dock__item" type="button" data-gg-action="toggle-theme">
+        <span class="cockpit-dock__icon">◐</span>
+        <span>Theme</span>
+      </button>
+      <button class="cockpit-dock__item" type="button" data-gg-action="sync-placeholder">
+        <span class="cockpit-dock__icon">↻</span>
+        <span>Sync</span>
+      </button>
+    </nav>
+  </div>
+
+  <section class="cockpit-panel" data-gg-hook="discovery-panel" hidden aria-labelledby="discovery-title">
+    <div class="cockpit-panel__scrim" data-gg-action="close-discovery"></div>
+    <div class="cockpit-panel__body">
+      <header class="cockpit-panel__head">
+        <h2 id="discovery-title">Discovery</h2>
+        <button class="gg-button" type="button" data-gg-action="close-discovery">Tutup</button>
+      </header>
+      <label class="cockpit-field">
+        <span class="cockpit-field__label">Search</span>
+        <input class="cockpit-field__input" data-gg-hook="discovery-input" type="search" placeholder="Cari BOLT, Laporan Direksi, Accord..." />
+      </label>
+      <div class="cockpit-discovery-results" data-gg-hook="discovery-results"></div>
+    </div>
+  </section>
+
+  <template id="cockpit-cell-template">
+    <td class="cockpit-cell" data-gg-hook="cockpit-cell">
+      <span data-gg-bind="cellText"></span>
+    </td>
+  </template>
+
+  <template id="cockpit-discovery-result-template">
+    <button class="cockpit-discovery-result" type="button" data-gg-hook="discovery-result">
+      <span class="cockpit-discovery-result__type" data-gg-bind="type"></span>
+      <strong class="cockpit-discovery-result__title" data-gg-bind="title"></strong>
+      <span class="cockpit-discovery-result__meta" data-gg-bind="meta"></span>
+    </button>
+  </template>
+
+  <template id="project-task-card-template">
+    <article class="cockpit-task-card" data-gg-hook="task-card">
+      <header class="cockpit-task-card__head">
+        <p class="cockpit-task-card__client" data-gg-bind="client"></p>
+        <h3 class="cockpit-task-card__title" data-gg-bind="title"></h3>
+      </header>
+      <p class="cockpit-task-card__status" data-gg-bind="statusLabel"></p>
+      <p class="cockpit-task-card__meta" data-gg-bind="deadlineLabel"></p>
+      <div class="cockpit-task-card__actions">
+        <a class="gg-button" data-gg-bind-href="docUrl" target="_blank" rel="noopener">Buka Dokumen</a>
+        <button class="gg-button gg-button--primary" type="button" data-gg-action="advance-task">Tandai Selesai</button>
+      </div>
+    </article>
+  </template>
+
+  <script type="module" src="../js/app.controller.js"></script>
+</body>
+</html>

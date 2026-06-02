@@ -1,0 +1,19 @@
+name: Smoke Production
+
+on:
+  workflow_dispatch:
+
+jobs:
+  smoke-production:
+    name: Production smoke check
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Check production URL
+        run: |
+          if [ -z "${{ vars.PRODUCTION_DASHBOARD_URL }}" ]; then
+            echo "PRODUCTION_DASHBOARD_URL repository variable is not configured."
+            exit 1
+          fi
+          curl -fsSL "${{ vars.PRODUCTION_DASHBOARD_URL }}" > /dev/null

@@ -1,0 +1,7 @@
+hex_color,status_code,label,responsible_role,notify_channel,kpi_event
+#ffff00,DRAFT_IN_PROGRESS,Draft in progress,copywriter,,none
+#00ff00,READY_FOR_TRANSLATION,Ready for translation,translator,project-updates,none
+#ff00ff,READY_FOR_LAYOUT,Ready for layout,layouter,project-updates,none
+#00ffff,ACCORD,Accord,pm,project-updates,completed
+#ff0000,REVISION_REQUIRED,Revision required,previous,revision-alerts,penalty
+#ff9900,FREELANCE_DRAFT,Freelance draft,freelance,project-updates,none

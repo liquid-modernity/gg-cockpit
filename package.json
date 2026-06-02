@@ -1,0 +1,23 @@
+{
+  "name": "gaga-cockpit-os",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "qa": "node qa/architecture-guard.mjs && node qa/frontend-contract-guard.mjs && node qa/naming-guard.mjs && node qa/source-of-truth-guard.mjs && node qa/registry-hardcode-guard.mjs && node qa/css-namespace-guard.mjs && node qa/generated-artifact-guard.mjs",
+    "qa:architecture": "node qa/architecture-guard.mjs",
+    "qa:frontend": "node qa/frontend-contract-guard.mjs",
+    "qa:naming": "node qa/naming-guard.mjs",
+    "test:e2e": "playwright test",
+    "test:e2e:report": "playwright show-report",
+    "ci": "npm run qa && npm run test:e2e",
+    "qa:source-of-truth": "node qa/source-of-truth-guard.mjs",
+    "qa:registry": "node qa/registry-hardcode-guard.mjs",
+    "qa:css": "node qa/css-namespace-guard.mjs",
+    "qa:generated": "node qa/generated-artifact-guard.mjs"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.55.0",
+    "wrangler": "^4.0.0"
+  }
+}

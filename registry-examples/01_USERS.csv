@@ -1,0 +1,4 @@
+user_id,name,email,pin_hash,role,access_level,discord_id,active
+USER_BHAKTI,Bhakti,bhakti@example.com,REPLACE_WITH_HASH,layouter,inhouse,,TRUE
+USER_SARI,Sari,sari@example.com,REPLACE_WITH_HASH,translator,inhouse,,TRUE
+USER_VENDOR_A,Vendor A,vendor.a@example.com,REPLACE_WITH_HASH,freelance,external,,TRUE

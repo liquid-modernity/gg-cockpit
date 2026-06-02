@@ -1,0 +1,47 @@
+{
+  "version": "0.1.0",
+  "colors": {
+    "#ffff00": {
+      "status": "DRAFT_IN_PROGRESS",
+      "label": "Draft in progress",
+      "owner_role": "copywriter",
+      "notify": false,
+      "kpi_event": false
+    },
+    "#00ff00": {
+      "status": "READY_FOR_TRANSLATION",
+      "label": "Ready for translation",
+      "owner_role": "translator",
+      "notify": true,
+      "kpi_event": false
+    },
+    "#ff00ff": {
+      "status": "READY_FOR_LAYOUT",
+      "label": "Ready for layout",
+      "owner_role": "layouter",
+      "notify": true,
+      "kpi_event": false
+    },
+    "#00ffff": {
+      "status": "ACCORD",
+      "label": "Accord",
+      "owner_role": "pm",
+      "notify": true,
+      "kpi_event": "completed"
+    },
+    "#ff0000": {
+      "status": "REVISION_REQUIRED",
+      "label": "Revision required",
+      "owner_role": "previous_owner",
+      "notify": true,
+      "kpi_event": "penalty"
+    },
+    "#ff9900": {
+      "status": "FREELANCE_DRAFT",
+      "label": "Freelance draft",
+      "owner_role": "freelance",
+      "notify": true,
+      "kpi_event": false
+    }
+  }
+}

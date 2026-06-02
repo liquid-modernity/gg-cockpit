@@ -1,0 +1,4 @@
+entity_type,entity_id,sheet_name,axis,current_index,metadata_key,active
+project,PROJECT_BOLT_2025,ⓒ 2025 Gaga,column,D,project_id,TRUE
+project,PROJECT_WTON_2025,ⓒ 2025 Gaga,column,E,project_id,TRUE
+task,TASK_LAPORAN_DIREKSI,ⓒ 2025 Gaga,row,23,task_id,TRUE
